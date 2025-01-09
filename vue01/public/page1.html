@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="libs/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <input type="text" v-model="mytest">
+        <button @click="handleAdd">添加</button>
+        <ul>
+            <li v-for="(data,index) in datalist">
+                {{data}}
+                <button @click="handleDel(index)">del</button>
+
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el:"#box",
+            data:{
+                datalist:["111","222","333"],
+                mytest:"aaa"
+
+            },
+            /**
+             * 
+             */
+            methods:{
+                handleAdd(){
+                    this.datalist.push(this.mytest)
+                    this.mytest=''
+
+
+                },
+                handleDel(index){
+                    this.datalist.splice(index,1)
+
+                } 
+            }
+        })
+    </script>
+</body>
+</html>
